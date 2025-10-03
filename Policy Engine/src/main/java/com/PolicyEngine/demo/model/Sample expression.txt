@@ -1,0 +1,35 @@
+{
+  "name": "Complex Loan Policy",
+  "loanType": "PERSONAL",
+  "action": "REJECT",
+  "priority": 1,
+  "active": true,
+  "conditionGroup": {
+    "logic": "OR",
+    "conditions": [],
+    "subGroups": [
+      {
+        "logic": "NOT",
+        "conditions": [],
+        "subGroups": [
+          {
+            "logic": "AND",
+            "conditions": [
+              { "field": "creditScore", "operator": ">=", "value": 700 },
+              { "field": "income", "operator": ">=", "value": 5000 }
+            ],
+            "subGroups": []
+          }
+        ]
+      },
+      {
+        "logic": "AND",
+        "conditions": [
+          { "field": "employmentYears", "operator": ">=", "value": 3 },
+          { "field": "dti", "operator": "<", "value": 0.4 }
+        ],
+        "subGroups": []
+      }
+    ]
+  }
+}
